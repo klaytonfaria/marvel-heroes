@@ -10,7 +10,7 @@
     "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
