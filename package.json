@@ -2,7 +2,20 @@
   "name": "marvel-heroes",
   "version": "0.0.0-development",
   "description": "Marvel heroes app",
-  "main": "webpack.config.js",
+  "author": "Klayton Faria <klayton.souza+npm@gmail.com> (klaytonfaria.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klaytonfaria/marvel-heroes/issues"
+  },
+  "homepage": "https://github.com/klaytonfaria/marvel-heroes#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klaytonfaria/marvel-heroes.git"
+  },
+  "keywords": [
+    "marvel",
+    "heroes"
+  ],
   "scripts": {
     "start": "webpack-dev-server",
     "dev": "webpack-dashboard -t zstore -c lightblue -- webpack-dev-server -p",
@@ -13,20 +26,6 @@
     "precommit": "validate-commit-msg",
     "release": "semantic-release pre && semantic-release post"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/klaytonfaria/marvel-heroes.git"
-  },
-  "keywords": [
-    "marvel",
-    "heroes"
-  ],
-  "author": "Klayton Faria <klayton.souza+npm@gmail.com> (klayton.ninja)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/klaytonfaria/marvel-heroes/issues"
-  },
-  "homepage": "https://github.com/klaytonfaria/marvel-heroes#readme",
   "dependencies": {
     "jsdom": "9.8.3",
     "react": "15.3.1",
@@ -62,9 +61,7 @@
         "test",
         "chore",
         "revert"
-      ],
-      "maxSubjectLength": 100,
-      "subjectPatternErrorMsg": "subject does not match subject pattern!"
+      ]
     }
   }
 }
