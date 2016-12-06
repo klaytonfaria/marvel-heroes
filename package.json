@@ -10,8 +10,7 @@
     "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
-    "precommit": "npm run commitmsg",
-    "commitmsg": "validate-commit-msg",
+    "precommit": "validate-commit-msg",
     "release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
