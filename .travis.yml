@@ -6,12 +6,8 @@ notifications:
   email: false
 node_js:
   - '4.2.4'
-engines:
-    npm:
-    - '3.3.12'
-cache:
-  directories:
-    - node_modules
+install:
+    npm install -g npm@'>=3.3.12'
 before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 before_script:
   - npm prune
