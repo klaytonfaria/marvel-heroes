@@ -1,6 +1,6 @@
 {
   "name": "marvel-heroes",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Marvel heroes app",
   "main": "webpack.config.js",
   "scripts": {
@@ -9,11 +9,12 @@
     "prod": "webpack-dev-server -p",
     "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klaytonfaria/marvel-heroes.git"
+    "url": "https://github.com/klaytonfaria/marvel-heroes.git"
   },
   "keywords": [
     "marvel",
@@ -43,6 +44,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
-    "webpack-dashboard": "^0.2.0"
+    "webpack-dashboard": "^0.2.0",
+    "semantic-release": "^6.3.2"
   }
 }
