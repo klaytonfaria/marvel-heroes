@@ -11,7 +11,7 @@
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
     "precommit": "validate-commit-msg",
-    "release": "semantic-release pre && npm publish && semantic-release post"
+    "release": "semantic-release pre && semantic-release post"
   },
   "repository": {
     "type": "git",
