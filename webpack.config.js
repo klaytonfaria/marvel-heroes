@@ -4,7 +4,7 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 const sourcePath = `${__dirname}/src/client`;
 const staticsPath = '/static';
-const distPath = `${__dirname}/dist`;
+// const distPath = `${__dirname}/dist`;
 
 module.exports = {
   devtool: 'source-map',
