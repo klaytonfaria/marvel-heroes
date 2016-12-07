@@ -7,7 +7,7 @@ notifications:
 node_js:
   - '7.2.1'
 install:
-  - npm install -g npm@'>=3.3.12'
+  - npm install -g npm@'>=3.3.12' webpack-dev-server webpack eslint validate-commit-msg semantic-release
 before_script:
   - npm prune
 after_success:
