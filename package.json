@@ -23,7 +23,7 @@
     "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
-    "precommit": "validate-commit-msg",
+    "precommit": "npm test && validate-commit-msg",
     "release": "semantic-release pre && semantic-release post"
   },
   "dependencies": {
