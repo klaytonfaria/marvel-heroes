@@ -3,7 +3,8 @@ const plugins = require('./webpack/plugins');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 const sourcePath = `${__dirname}/src/client`;
-const staticsPath = `${__dirname}/static`;
+const staticsPath = '/static';
+const distPath = `${__dirname}/dist`;
 
 module.exports = {
   devtool: 'source-map',
@@ -13,15 +14,16 @@ module.exports = {
     vendor: [
       'react',
       'react-dom',
-      'react-redux',
+    //   'react-redux',
       'react-router',
-      'react-router-redux',
-      'redux'
+    //   'react-router-redux',
+    //   'redux'
     ]
   },
   output: {
-    path: staticsPath,
-    filename: '[name].js'
+    path: `${staticsPath}`,
+    filename: '[name].js',
+    publicPath: staticsPath
   },
   module: {
     rules: [
@@ -59,10 +61,12 @@ module.exports = {
   },
   plugins,
   devServer: {
-    contentBase: './src/client',
+    contentBase: sourcePath,
+    publicPath: staticsPath,
     historyApiFallback: true,
-    port: 3000,
+    port: 3001,
     compress: isProd,
+    lazy: false,
     inline: !isProd,
     hot: !isProd,
     stats: {
@@ -71,7 +75,7 @@ module.exports = {
       chunks: false,
       hash: false,
       modules: false,
-      publicPath: false,
+      publicPath: true,
       timings: true,
       version: false,
       warnings: true,
