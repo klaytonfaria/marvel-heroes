@@ -18,13 +18,13 @@
   ],
   "scripts": {
     "start": "webpack-dev-server",
-    "dev": "./node_modules/webpack-dashboard/bin/webpack-dashboard.js -t zstore -c lightblue -- webpack-dev-server -p",
-    "prod": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
-    "build": "./node_modules/webpack/bin/webpack.js -p",
+    "dev": "webpack-dashboard -t zstore -c lightblue -- webpack-dev-server -p",
+    "prod": "webpack-dev-server -p",
+    "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
-    "precommit": "npm test && ./node_modules/validate-commit-message/bin/validate-commit-msg.js",
-    "release": "./node_modules/semantic-release/bin/semantic-release.js pre && ./node_modules/semantic-release/bin/semantic-release.js post"
+    "precommit": "npm test && validate-commit-msg",
+    "release": "semantic-release pre && semantic-release post"
   },
   "dependencies": {
     "babel-core": "^6.18.2",
