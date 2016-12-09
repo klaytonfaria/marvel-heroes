@@ -13,6 +13,7 @@ const plugins = [
     'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
   }),
   new webpack.NamedModulesPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
   new DashboardPlugin()
 ];
 

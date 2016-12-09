@@ -18,12 +18,12 @@ module.exports = {
       'react-router',
     //   'react-router-redux',
     //   'redux'
-    ]
+    ],
   },
   output: {
     path: `${staticsPath}`,
     filename: '[name].js',
-    publicPath: staticsPath
+    publicPath: staticsPath,
   },
   module: {
     rules: [
@@ -32,32 +32,32 @@ module.exports = {
         exclude: /node_modules/,
         use: 'file-loader',
         query: {
-          name: '[name].[ext]'
-        }
+          name: '[name].[ext]',
+        },
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader'
-        ]
-      }
-    ]
+          'babel-loader',
+        ],
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
       `${__dirname}/node_modules`,
-      sourcePath
-    ]
+      sourcePath,
+    ],
   },
   plugins,
   devServer: {
@@ -80,8 +80,8 @@ module.exports = {
       version: false,
       warnings: true,
       colors: {
-        green: '\u001b[32m'
-      }
-    }
-  }
+        green: '\u001b[32m',
+      },
+    },
+  },
 };
