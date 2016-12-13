@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const autoprefixer = require('autoprefixer');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -14,7 +15,10 @@ const plugins = [
   }),
   new webpack.NamedModulesPlugin(),
   new webpack.HotModuleReplacementPlugin(),
-  new DashboardPlugin()
+  new DashboardPlugin(),
+  new webpack.DefinePlugin({
+    postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })],
+  }),
 ];
 
 if (isProd) {
