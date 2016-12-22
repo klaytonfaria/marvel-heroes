@@ -8,13 +8,14 @@ const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
-    filename: 'vendor.js'
+    filename: 'vendor.js',
   }),
   new webpack.DefinePlugin({
-    'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
+    'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
   }),
+  new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.NamedModulesPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
   new DashboardPlugin(),
   new webpack.DefinePlugin({
     postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })],
@@ -25,7 +26,7 @@ if (isProd) {
   plugins.push(
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false
+      debug: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -38,13 +39,13 @@ if (isProd) {
         dead_code: true,
         evaluate: true,
         if_return: true,
-        join_vars: true
+        join_vars: true,
       },
       output: {
-        comments: false
-      }
+        comments: false,
+      },
     })
-  );
+  )
 } else {
   plugins.push(
     new webpack.HotModuleReplacementPlugin()

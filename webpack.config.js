@@ -7,15 +7,15 @@ const staticsPath = '/static';
 // const distPath = `${__dirname}/dist`;
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: isProd ? 'source-map' : 'eval',
   context: sourcePath,
   entry: {
     app: './index.jsx',
     vendor: [
       'react',
       'react-dom',
-    //   'react-redux',
       'react-router',
+    //   'react-redux',
     //   'react-router-redux',
     //   'redux'
     ],
@@ -36,10 +36,12 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.(sass|scss)$/,
         exclude: /node_modules/,
         use: [
-          'css!postcss!sass',
+          'style-loader',
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
