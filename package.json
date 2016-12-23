@@ -17,13 +17,12 @@
     "heroes"
   ],
   "scripts": {
-    "start": "webpack-dev-server",
-    "dev": "webpack-dashboard -t zstore -c lightblue -- webpack-dev-server -p",
+    "start": "webpack-dev-server --progress --hot",
     "prod": "webpack-dev-server -p",
     "build": "webpack -p",
     "lint": "eslint ./client ./webpack.config.js -f table || true",
     "test": "npm run lint",
-    "precommit": "npm test && validate-commit-msg",
+    "precommit": "validate-commit-msg",
     "release": "semantic-release pre && semantic-release post"
   },
   "dependencies": {
@@ -31,6 +30,7 @@
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.9",
     "css-loader": "^0.26.1",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
     "extract-text-webpack-plugin": "^2.0.0-beta.4 ",
     "jsdom": "^9.9.1",
     "react": "^15.4.1",
@@ -49,15 +49,14 @@
     "eslint": "^3.12.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.7.1",
+    "html-webpack-plugin": "^2.24.1",
     "husky": "^0.12.0",
     "node-sass": "^4.1.1",
     "postcss-loader": "^1.2.1",
     "sass-loader": "^4.1.1",
     "semantic-release": "^6.3.5",
-    "validate-commit-message": "^3.0.1",
-    "webpack-dashboard": "^0.2.0"
+    "validate-commit-message": "^3.0.1"
   },
   "config": {
     "validate-commit-msg": {

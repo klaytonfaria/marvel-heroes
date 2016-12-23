@@ -1,10 +1,16 @@
 const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const autoprefixer = require('autoprefixer');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
+
+
 const plugins = [
+  new DashboardPlugin(),
+  new webpack.NamedModulesPlugin(),
+  new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
@@ -13,10 +19,6 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
   }),
-  new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.AggressiveMergingPlugin(),
-  new webpack.NamedModulesPlugin(),
-  new DashboardPlugin(),
   new webpack.DefinePlugin({
     postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })],
   }),

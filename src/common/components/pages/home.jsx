@@ -1,9 +1,9 @@
 import React from 'react';
 
 const PageContent = () => (
-  <div>
+  <header>
     Home
-  </div>
+  </header>
 );
 
 PageContent.displayName = 'PageContent';

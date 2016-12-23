@@ -1,13 +1,64 @@
-const plugins = require('./webpack/plugins');
+'use strict';
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = nodeEnv === 'production';
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const sourcePath = `${__dirname}/src/client`;
-const staticsPath = '/static';
-// const distPath = `${__dirname}/dist`;
+const staticsPath = '/';
+
+
+const plugins = [
+  new webpack.NamedModulesPlugin(),
+  new webpack.optimize.AggressiveMergingPlugin(),
+  // new webpack.HotModuleReplacementPlugin(),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    filename: 'vendor-[hash].js',
+  }),
+  new webpack.DefinePlugin({
+    postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })],
+  }),
+  new HtmlWebpackPlugin({
+    title: 'Marvel Heroes - Browse all Marvel heroes.',
+    filename: 'index.html',
+    template: `${__dirname}/src/client/index.ejs`,
+    inject: false
+  }),
+];
+
+const devServer = {
+
+  publicPath: staticsPath,
+  historyApiFallback: true,
+  port: 3001,
+  compress: false,
+  lazy: false,
+  inline: false,
+  hot: false,
+  stats: {
+    assets: true,
+    children: false,
+    chunks: false,
+    hash: false,
+    modules: false,
+    publicPath: true,
+    timings: true,
+    version: false,
+    warnings: true,
+    colors: {
+      green: '\u001b[32m',
+    },
+  },
+}
+
+
+
 
 module.exports = {
-  devtool: isProd ? 'source-map' : 'eval',
+  cache: true,
+  devtool: 'source-map',
   context: sourcePath,
   entry: {
     app: './index.jsx',
@@ -15,25 +66,21 @@ module.exports = {
       'react',
       'react-dom',
       'react-router',
-    //   'react-redux',
-    //   'react-router-redux',
-    //   'redux'
     ],
   },
+
   output: {
     path: `${staticsPath}`,
-    filename: '[name].js',
+    filename: '[name]-[hash].js',
     publicPath: staticsPath,
   },
+
   module: {
     rules: [
       {
         test: /\.html$/,
         exclude: /node_modules/,
-        use: 'file-loader',
-        query: {
-          name: '[name].[ext]',
-        },
+        use: 'html-loader'
       },
       {
         test: /\.(sass|scss)$/,
@@ -53,36 +100,16 @@ module.exports = {
       },
     ],
   },
+
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: [
-      `${__dirname}/node_modules`,
-      sourcePath,
-    ],
+    modules: [`${__dirname}/node_modules`, sourcePath],
   },
+
+  performance: {
+    hints: false
+  },
+
   plugins,
-  devServer: {
-    contentBase: sourcePath,
-    publicPath: staticsPath,
-    historyApiFallback: true,
-    port: 3001,
-    compress: isProd,
-    lazy: false,
-    inline: !isProd,
-    hot: !isProd,
-    stats: {
-      assets: true,
-      children: false,
-      chunks: false,
-      hash: false,
-      modules: false,
-      publicPath: true,
-      timings: true,
-      version: false,
-      warnings: true,
-      colors: {
-        green: '\u001b[32m',
-      },
-    },
-  },
+  devServer,
 };
