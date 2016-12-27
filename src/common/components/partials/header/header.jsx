@@ -1,7 +1,5 @@
 import React from 'react';
 
-require('./header.scss');
-
 const Header = () => (
   <header />
 );
