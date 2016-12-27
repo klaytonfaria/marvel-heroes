@@ -1,40 +1,40 @@
-extends:
-  eslint-config-airbnb
+{
+ "extends": "airbnb",
 
-plugins:
-  - react
+ "env": {
+   "es6": true,
+   "node": true,
+   "browser": true
+ },
 
-parser:
-  babel-eslint
+ 	"ecmaFeatures": {
+		"jsx": true,
+		"modules": true,
+		"destructuring": true,
+		"classes": true,
+		"forOf": true,
+		"blockBindings": true,
+		"arrowFunctions": true
+	},
 
-settings:
-  ecmascript: 6
-
-ecmaFeatures:
-  jsx: true
-  modules: true
-  destructuring: true
-  classes: true
-  forOf: true
-  blockBindings: true
-  arrowFunctions: true
-
-env:
-  browser: true
-
-rules:
-  indent: 2
-  func-style: 1
-  func-names: 1
-  comma-dangle: 1
-  no-console: 1
-  no-param-reassign: 1
-  linebreak-style: 1
-  import/no-extraneous-dependencies: 1
-  import/no-unresolved: 1
-  import/extensions: 1
-  react/jsx-filename-extension: 1
-  react/prop-types: 1
-  react/forbid-prop-types: 1
-  react/jsx-no-duplicate-props: 2
-  jsx-a11y/anchor-has-content: 1
+ "rules": {
+    "no-console": 1,
+    "eol-last": 0,
+    "one-var": [1, "always"],
+    "space-before-function-paren": [2, "never"],
+    "jsx-a11y/anchor-has-content": 0,
+    "indent": 1,
+    "func-style": 1,
+    "func-names": 1,
+    "comma-dangle": 0,
+    "no-param-reassign": 1,
+    "linebreak-style": 1,
+    "import/no-extraneous-dependencies": 1,
+    "import/no-unresolved": 1,
+    "import/extensions": 1,
+    "react/jsx-filename-extension": 1,
+    "react/prop-types": 1,
+    "react/forbid-prop-types": 1,
+    "react/jsx-no-duplicate-props": 2
+ }
+}
