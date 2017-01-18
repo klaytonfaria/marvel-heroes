@@ -1,13 +1,14 @@
 const webpack = require('webpack'),
   autoprefixer = require('autoprefixer'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
+  Extractor = require("extract-text-webpack-plugin"),
 
   sourcePath = `${__dirname}/src/client`,
   staticsPath = '/',
   plugins = [
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-  // new webpack.HotModuleReplacementPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
@@ -21,7 +22,8 @@ const webpack = require('webpack'),
       filename: 'index.html',
       template: `${__dirname}/src/client/index.ejs`,
       inject: false
-    })
+    }),
+    new Extractor("app-[hash].css")
   ],
 
   devServer = {
@@ -31,7 +33,7 @@ const webpack = require('webpack'),
     compress: false,
     lazy: false,
     inline: false,
-    hot: false,
+    hot: true,
     stats: {
       assets: true,
       children: false,
@@ -78,11 +80,7 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        loader: Extractor.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader'})
       },
       {
         test: /\.(js|jsx)$/,

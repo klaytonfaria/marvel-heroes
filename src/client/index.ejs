@@ -12,7 +12,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
     <% for(var i=0; i<htmlWebpackPlugin.files.css.length; i++) {%>
-    <script src="<%= htmlWebpackPlugin.files.css[i] %>"></script>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[i] %>">
     <% } %>
   </head>
   <body>
